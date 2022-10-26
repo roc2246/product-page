@@ -1,7 +1,7 @@
 const express = require('express');
 require('./mongoose')
 const productRouter = require('./routes/products')
-const cartRouter = require('./routes/cart')
+const cartRouter = require('./routes/cart-items')
 const pageRouter = require('./routes/page')
 
 const app = express()
