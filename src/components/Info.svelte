@@ -24,13 +24,14 @@
   };
 
   const toCart = () => {
+    const totalPrice = $productStore[0].totalprice * quantity
     const cartItem = {
       id: generateID($cartStore),
       image: "TEST",
       name: $productStore[0].name,
-      price: $productStore[0].price,
+      price: $productStore[0].totalprice,
       quantity: 4,
-      totalprice: $productStore[0].totalprice,
+      totalprice: totalPrice,
     };
     fetch("/cart", {
       method: "POST",
