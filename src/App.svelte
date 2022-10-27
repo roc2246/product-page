@@ -2,6 +2,7 @@
   import Nav from "./components/Nav.svelte";
   import Cart from "./components/Cart.svelte";
   import Info from "./components/Info.svelte"
+  import Gallery from "./gallery/Gallery.svelte"
 </script>
 
 <main>
@@ -10,6 +11,7 @@
 	<Cart/>
   </section>
   <section id="product-info">
+	<Gallery/>
 	<Info/>
   </section>
 </main>
