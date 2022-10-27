@@ -2,4 +2,11 @@
     export let source
 </script>
 
-<img src="{source}" alt="thumbnail">
+<img class="thumbnail" src="{source}" alt="thumbnail">
+
+<style lang="scss">
+    .thumbnail{
+        width: 5rem;
+        height: auto;
+    }
+</style>

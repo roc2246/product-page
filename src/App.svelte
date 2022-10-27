@@ -20,9 +20,15 @@
 	main{
 		margin: 2rem;
 	}
-	#top-row{
+	#top-row, #product-info{
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
+	}
+	#product-info{
+		flex-wrap: wrap;
+		margin-left: 10rem;
+		margin-right: 10rem;
+		margin-top: 10rem;
 	}
 </style>

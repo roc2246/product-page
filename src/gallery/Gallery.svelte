@@ -12,18 +12,35 @@
     }
   });
 
-  let image
-  $: if($productStore !==null) {
-    image = $productStore[0].images[0]
+  let image;
+  $: if ($productStore !== null) {
+    image = $productStore[0].images[0];
   }
 </script>
 
 {#if $productStore}
-<section class="gallery">
-    <img src="{image}" alt="product">
-    {#each $productStore[0].thumbnails as thumbnail}
-    <Thumbnail source={thumbnail}/>
+  <section class="gallery">
+    <img class="gallery__img" src={image} alt="product" />
+    <div class="gallery__thumbnails">
+      {#each $productStore[0].thumbnails as thumbnail}
+      <Thumbnail source={thumbnail} />
     {/each}
-</section>
-  
+    </div>
+    
+  </section>
 {/if}
+
+<style lang="scss">
+  .gallery{
+    display: flex;
+    flex-direction: column;
+    &__img{
+      max-width: 25rem;
+    }
+    &__thumbnails{
+      display: flex;
+      flex-direction: row;
+    }
+  }
+  
+</style>
