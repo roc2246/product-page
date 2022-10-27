@@ -29,7 +29,15 @@ const productSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
+  totalprice: {
+    type: Number,
+    required: true
+  },
   images: {
+    type: Array,
+    required: true
+  },
+  thumbnails: {
     type: Array,
     required: true
   }

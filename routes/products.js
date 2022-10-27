@@ -12,7 +12,9 @@ router.post("/", async (req, res) => {
     price: req.body.price,
     sale: req.body.sale,
     discount: req.body.discount,
+    totalprice: req.body.totalprice,
     images: req.body.images,
+    thumbnails: req.body.thumbnails,
   });
   try {
     const newProduct = await product.save()
