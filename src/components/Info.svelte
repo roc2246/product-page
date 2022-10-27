@@ -1,18 +1,45 @@
 <script>
-  import { productStore, getData } from "../js/stores.js";
+  import { productStore, cartStore, getData } from "../js/stores.js";
   import { onMount } from "svelte";
 
-  import Button from "../UI/Button.svelte"
+  import Button from "../UI/Button.svelte";
 
   onMount(async () => {
     let info = await getData("/products");
+    let cart = await getData("/cart");
 
     if (info) {
       productStore.update((data) => info);
     }
+
+    if (cart) {
+      cartStore.update((data) => cart);
+    }
   });
 
-  let quantity = 0
+  let quantity = 0;
+  const generateID = (store) => {
+    let id = store.length + 1;
+    return id;
+  };
+
+  const toCart = () => {
+    const cartItem = {
+      id: generateID($cartStore),
+      image: "TEST",
+      name: $productStore[0].name,
+      price: $productStore[0].price,
+      quantity: 4,
+      totalprice: $productStore[0].totalprice,
+    };
+    fetch("/cart", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(cartItem),
+    });
+  };
 </script>
 
 <section class="product">
@@ -44,12 +71,14 @@
         <img src="images/icon-minus.svg" alt="decrease quantity" />
       </div>
     </div>
-    <Button><img src="images/icon-cart.svg" alt="cart-icon">Add to cart</Button>
+    <Button on:click={() => toCart()}
+      ><img src="images/icon-cart.svg" alt="cart-icon" />Add to cart</Button
+    >
   </div>
 </section>
 
 <style lang="scss">
-  .product{
+  .product {
     max-width: 20rem;
   }
 </style>

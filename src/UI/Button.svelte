@@ -2,7 +2,7 @@
 
 </script>
 
-<button><slot /></button>
+<button on:click><slot /></button>
 
 <style lang="scss">
 

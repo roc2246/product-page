@@ -8,7 +8,7 @@ const Cartitem = require("../models/cart-items")
 router.post("/",  async(req, res) => {
     const cartitem = new Cartitem({
         id: req.body.id,
-          image: req.body.image[0],
+          image: req.body.image,
           name: req.body.name,
           price: req.body.price,
           quantity: req.body.quantity,
