@@ -12,35 +12,34 @@
     }
   });
 
-  let imgNo
-  $: if ($productStore !== null) {
-    imgNo = 0
-  }
+  let imgNo = 0;
 </script>
 
 {#if $productStore}
   <section class="gallery">
-    <img class="gallery__img" src={$productStore[0].images[imgNo]} alt="product" />
+    <img
+      class="gallery__img"
+      src={$productStore[0].images[imgNo]}
+      alt="product"
+    />
     <div class="gallery__thumbnails">
       {#each $productStore[0].thumbnails as thumbnail, i}
-      <Thumbnail on:imgchange={()=> imgNo=i} source={thumbnail} />
-    {/each}
+        <Thumbnail on:imgchange={() => (imgNo = i)} source={thumbnail} />
+      {/each}
     </div>
-    
   </section>
 {/if}
 
 <style lang="scss">
-  .gallery{
+  .gallery {
     display: flex;
     flex-direction: column;
-    &__img{
+    &__img {
       max-width: 25rem;
     }
-    &__thumbnails{
+    &__thumbnails {
       display: flex;
       flex-direction: row;
     }
   }
-  
 </style>
