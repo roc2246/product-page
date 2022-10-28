@@ -30,7 +30,7 @@
       image: "TEST",
       name: $productStore[0].name,
       price: $productStore[0].totalprice,
-      quantity: 4,
+      quantity: quantity,
       totalprice: totalPrice,
     };
     fetch("/cart", {
@@ -41,6 +41,15 @@
       body: JSON.stringify(cartItem),
     });
   };
+
+  const updateQuantity = (mode) => {
+    if(mode ==="increase"){
+      quantity++
+    }
+    if(mode ==="decrease"){
+      quantity--
+    }
+  }
 </script>
 
 <section class="product">
@@ -64,11 +73,11 @@
   {/if}
   <div class="product__order">
     <div class="quantity">
-      <div class="quantity_increase">
+      <div class="quantity_increase" on:keydown on:click={()=> updateQuantity("increase")}>
         <img src="images/icon-plus.svg" alt="increase quantity" />
       </div>
       <div class="quantity__number">{quantity}</div>
-      <div class="quantity__decrease">
+      <div class="quantity__decrease"  on:keydown on:click={()=> updateQuantity("decrease")}>
         <img src="images/icon-minus.svg" alt="decrease quantity" />
       </div>
     </div>
