@@ -2,7 +2,7 @@
     export let source
 </script>
 
-<img class="thumbnail" src="{source}" alt="thumbnail">
+<img on:keydown on:click class="thumbnail" src="{source}" alt="thumbnail">
 
 <style lang="scss">
     .thumbnail{
