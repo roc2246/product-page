@@ -12,7 +12,6 @@
     }
   });
 
-  let image;
   let imgNo
   $: if ($productStore !== null) {
     imgNo = 0
@@ -24,7 +23,7 @@
     <img class="gallery__img" src={$productStore[0].images[imgNo]} alt="product" />
     <div class="gallery__thumbnails">
       {#each $productStore[0].thumbnails as thumbnail, i}
-      <Thumbnail on:click={()=> imgNo=i} source={thumbnail} />
+      <Thumbnail on:imgchange={()=> imgNo=i} source={thumbnail} />
     {/each}
     </div>
     
