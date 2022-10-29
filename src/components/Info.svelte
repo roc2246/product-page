@@ -40,6 +40,7 @@
       },
       body: JSON.stringify(cartItem),
     });
+    $cartStore = [...$cartStore, cartItem]
   };
 
   const updateQuantity = (mode) => {
