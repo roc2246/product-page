@@ -22,6 +22,9 @@
   .nav{
     display: flex;
     flex-direction: row;
+    .logo{
+      margin-right: 2rem;
+    }
     &__mobile-toggle{
       display: none;
       margin-right: 1rem;
@@ -29,6 +32,7 @@
     &__links{
       display: flex;
       flex-direction: row;
+      flex-wrap: wrap;
       &--link{
         margin-left: 1rem;
         margin-right: 1rem;
