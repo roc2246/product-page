@@ -5,7 +5,7 @@
   import Gallery from "./gallery/Gallery.svelte";
   import Modal from "./UI/Modal.svelte";
 
-  let showLightbox = false
+  let showLightbox = false;
 </script>
 
 <main>
@@ -14,11 +14,11 @@
     <Cart />
   </section>
   <section id="product-info">
-    <Gallery on:click={()=> showLightbox = true }/>
+    <Gallery mode="gallery" on:click={() => (showLightbox = true)} />
     <Info />
   </section>
   {#if showLightbox === true}
-  <Modal close={()=>showLightbox =false}><Gallery /></Modal>
+    <Modal close={() => (showLightbox = false)}><Gallery mode="lightbox" /></Modal>
   {/if}
 </main>
 
