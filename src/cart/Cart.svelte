@@ -11,30 +11,28 @@
 
     cartStore.update((data) => items);
   });
-
-
 </script>
 
 <section class="cart">
   <div
     class="cart__icon"
     on:keydown
-    on:click={() => (!showCart ? (showCart = true) : !showCart)}
+    on:click={() => (!showCart ? (showCart = true) : showCart = false)}
   >
     <img src="icon-cart.svg" alt="cart-icon" />
   </div>
-{#if $cartStore}
-  <span class="cart__badge">{$cartStore.length}</span>
-{/if}
+  {#if $cartStore}
+    <span class="cart__badge">{$cartStore.length}</span>
+  {/if}
   <div class="user-avatar">
     <img src="image-avatar.jpg" alt="user" />
   </div>
 
-  {#if /* showCart === true && */ $cartStore}
+  {#if showCart === true && $cartStore}
     <div class="cart__items">
       {#each $cartStore as item}
         <CartItem
-        cartID = {item.id}
+          cartID={item.id}
           image={item.image[0]}
           name={item.name}
           price={item.price}
@@ -43,7 +41,7 @@
         />
       {/each}
     </div>
-    <Button >Checkout</Button>
+    <Button>Checkout</Button>
   {/if}
 </section>
 
