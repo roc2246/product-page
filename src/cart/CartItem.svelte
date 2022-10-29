@@ -1,4 +1,5 @@
 <script>
+  import { cartStore } from "../js/stores";
 
 export let cartID
   export let image;
@@ -14,6 +15,8 @@ export let cartID
           "Content-type": "application/json;",
         },
       });
+      const results = $cartStore.filter((item) => item.id !== id);
+      $cartStore = results;
   }
  
 </script>
