@@ -17,15 +17,15 @@
   <div
     class="cart__icon"
     on:keydown
-    on:click={() => (!showCart ? (showCart = true) : showCart = false)}
+    on:click={() => (!showCart ? (showCart = true) : (showCart = false))}
   >
-    <img src="icon-cart.svg" alt="cart-icon" />
+    <img src="images/icon-cart.svg" alt="cart-icon" />
   </div>
-  {#if $cartStore}
+  {#if $cartStore && $cartStore.length !== 0}
     <span class="cart__badge">{$cartStore.length}</span>
   {/if}
   <div class="user-avatar">
-    <img src="image-avatar.jpg" alt="user" />
+    <img src="images/image-avatar.png" alt="user" />
   </div>
 
   {#if showCart === true && $cartStore}
@@ -49,5 +49,14 @@
   .cart {
     display: flex;
     flex-direction: row;
+
+    .user-avatar {
+      margin-left: 2rem;
+      margin-top: -1rem;
+      & > img {
+        width: 3.5rem;
+        height: auto;
+      }
+    }
   }
 </style>
