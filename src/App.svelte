@@ -13,6 +13,7 @@
     <Nav />
     <Cart />
   </section>
+  <hr>
   <section id="product-info">
     <Gallery mode="gallery" on:click={() => (showLightbox = true)} />
     <Info />
@@ -31,6 +32,9 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+  }
+  #top-row{
+    margin-bottom: 2rem;
   }
   #product-info {
     flex-wrap: wrap;
