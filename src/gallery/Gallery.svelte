@@ -34,6 +34,9 @@
         <img src="images/icon-previous.svg" alt="" />
       </div>
     {/if}
+    <div class="gallery__prev-img--mobile" on:keydown on:click={()=>cycleImgs("previous")}>
+      <img src="images/icon-previous.svg" alt="" />
+    </div>
     <img
       on:keydown
       on:click
@@ -46,6 +49,9 @@
         <img src="images/icon-next.svg" alt="" />
       </div>
     {/if}
+    <div class="gallery__next-img--mobile" on:keydown on:click={()=>cycleImgs("next")}>
+      <img src="images/icon-next.svg" alt="" />
+    </div>
 
     <div class="gallery__thumbnails">
       {#each $productStore[0].thumbnails as thumbnail, i}
@@ -56,6 +62,7 @@
 {/if}
 
 <style lang="scss">
+  @import "../scss/global";
   .gallery {
     display: flex;
     flex-direction: column;
@@ -66,5 +73,32 @@
       display: flex;
       flex-direction: row;
     }
+
+    &__prev-img{
+      &--mobile{
+        display: none;
+      }
+    }
+    &__next-img{
+      &--mobile{
+        display: none;
+      }
+    }
+  }
+
+  @media (max-width: $mobile) {
+    .gallery {
+  
+    &__prev-img{
+      &--mobile{
+        display: inline-block;
+      }
+    }
+    &__next-img{
+      &--mobile{
+        display: inline-block;
+      }
+    }
+  }
   }
 </style>
