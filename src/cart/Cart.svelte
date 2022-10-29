@@ -1,0 +1,49 @@
+<script>
+  import CartItem from "./CartItem.svelte";
+  import Button from "../UI/Button.svelte";
+  import { getData, cartStore } from "../js/stores.js";
+  import { onMount } from "svelte";
+
+  let showCart = false;
+
+  onMount(async () => {
+    let items = await getData("/cart");
+
+    cartStore.update((data) => items);
+  });
+</script>
+
+<section class="cart">
+  <div
+    class="cart__icon"
+    on:keydown
+    on:click={() => (!showCart ? (showCart = true) : !showCart)}
+  >
+    <img src="icon-cart.svg" alt="cart-icon" />
+  </div>
+  <div class="user-avatar">
+    <img src="image-avatar.jpg" alt="user" />
+  </div>
+
+  {#if /* showCart === true && */ $cartStore}
+    <div class="cart__items">
+      {#each $cartStore as item}
+        <CartItem
+          image={item.image[0]}
+          name={item.name}
+          price={item.price}
+          quantity={item.quantity}
+          total={item.totalprice}
+        />
+      {/each}
+    </div>
+    <Button>Checkout</Button>
+  {/if}
+</section>
+
+<style lang="scss">
+  .cart {
+    display: flex;
+    flex-direction: row;
+  }
+</style>

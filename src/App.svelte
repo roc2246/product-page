@@ -1,6 +1,6 @@
 <script>
   import Nav from "./components/Nav.svelte";
-  import Cart from "./components/Cart.svelte";
+  import Cart from "./cart/Cart.svelte";
   import Info from "./components/Info.svelte"
   import Gallery from "./gallery/Gallery.svelte"
 </script>

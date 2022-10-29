@@ -27,7 +27,7 @@
     const totalPrice = $productStore[0].totalprice * quantity
     const cartItem = {
       id: generateID($cartStore),
-      image: "TEST",
+      image: $productStore[0].images[0],
       name: $productStore[0].name,
       price: $productStore[0].totalprice,
       quantity: quantity,
