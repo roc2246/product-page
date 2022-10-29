@@ -17,7 +17,7 @@
 
 {#if $productStore}
   <section class="gallery">
-    <img
+    <img on:keydown on:click
       class="gallery__img"
       src={$productStore[0].images[imgNo]}
       alt="product"
