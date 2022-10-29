@@ -23,6 +23,9 @@
   >
     <img src="icon-cart.svg" alt="cart-icon" />
   </div>
+{#if $cartStore}
+  <span class="cart__badge">{$cartStore.length}</span>
+{/if}
   <div class="user-avatar">
     <img src="image-avatar.jpg" alt="user" />
   </div>
