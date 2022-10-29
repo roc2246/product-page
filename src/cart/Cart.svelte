@@ -11,6 +11,8 @@
 
     cartStore.update((data) => items);
   });
+
+
 </script>
 
 <section class="cart">
@@ -29,6 +31,7 @@
     <div class="cart__items">
       {#each $cartStore as item}
         <CartItem
+        cartID = {item.id}
           image={item.image[0]}
           name={item.name}
           price={item.price}
@@ -37,7 +40,7 @@
         />
       {/each}
     </div>
-    <Button>Checkout</Button>
+    <Button >Checkout</Button>
   {/if}
 </section>
 
