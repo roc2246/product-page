@@ -17,7 +17,7 @@
     }
   });
 
-  let quantity = 0;
+  let quantity = 1;
   const generateID = (store) => {
     let id = store.length + 1;
     return id;
@@ -48,7 +48,7 @@
       quantity++
     }
     if(mode ==="decrease"){
-      quantity--
+      quantity > 1 ? quantity-- : quantity
     }
   }
 </script>
