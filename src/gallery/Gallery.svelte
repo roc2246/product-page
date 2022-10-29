@@ -17,12 +17,12 @@
   const cycleImgs = (cycle) => {
     if (cycle === "next") {
       imgNo++;
-      if(imgNo > $productStore[0].images.length - 1) imgNo = 0
+      if (imgNo > $productStore[0].images.length - 1) imgNo = 0;
     }
 
     if (cycle === "previous") {
       imgNo--;
-      if(imgNo < 0) imgNo = $productStore[0].images.length - 1
+      if (imgNo < 0) imgNo = $productStore[0].images.length - 1;
     }
   };
 </script>
@@ -30,11 +30,19 @@
 {#if $productStore}
   <section class="gallery">
     {#if mode === "lightbox"}
-      <div class="gallery__prev-img" on:keydown on:click={()=>cycleImgs("previous")}>
+      <div
+        class="gallery__prev-img"
+        on:keydown
+        on:click={() => cycleImgs("previous")}
+      >
         <img src="images/icon-previous.svg" alt="" />
       </div>
     {/if}
-    <div class="gallery__prev-img--mobile" on:keydown on:click={()=>cycleImgs("previous")}>
+    <div
+      class="gallery__prev-img--mobile"
+      on:keydown
+      on:click={() => cycleImgs("previous")}
+    >
       <img src="images/icon-previous.svg" alt="" />
     </div>
     <img
@@ -45,11 +53,19 @@
       alt="product"
     />
     {#if mode === "lightbox"}
-      <div class="gallery__next-img" on:keydown on:click={()=>cycleImgs("next")}>
+      <div
+        class="gallery__next-img"
+        on:keydown
+        on:click={() => cycleImgs("next")}
+      >
         <img src="images/icon-next.svg" alt="" />
       </div>
     {/if}
-    <div class="gallery__next-img--mobile" on:keydown on:click={()=>cycleImgs("next")}>
+    <div
+      class="gallery__next-img--mobile"
+      on:keydown
+      on:click={() => cycleImgs("next")}
+    >
       <img src="images/icon-next.svg" alt="" />
     </div>
 
@@ -67,6 +83,7 @@
     display: flex;
     flex-direction: column;
     &__img {
+      border-radius: $gallery-radius;
       max-width: 25rem;
     }
     &__thumbnails {
@@ -74,13 +91,13 @@
       flex-direction: row;
     }
 
-    &__prev-img{
-      &--mobile{
+    &__prev-img {
+      &--mobile {
         display: none;
       }
     }
-    &__next-img{
-      &--mobile{
+    &__next-img {
+      &--mobile {
         display: none;
       }
     }
@@ -88,17 +105,16 @@
 
   @media (max-width: $mobile) {
     .gallery {
-  
-    &__prev-img{
-      &--mobile{
-        display: inline-block;
+      &__prev-img {
+        &--mobile {
+          display: inline-block;
+        }
+      }
+      &__next-img {
+        &--mobile {
+          display: inline-block;
+        }
       }
     }
-    &__next-img{
-      &--mobile{
-        display: inline-block;
-      }
-    }
-  }
   }
 </style>
