@@ -31,15 +31,15 @@
   #product-info {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
   }
   #top-row{
     margin-bottom: 2rem;
+    justify-content: space-between;
   }
   #product-info {
     flex-wrap: wrap;
-    margin-left: 10rem;
-    margin-right: 10rem;
-    margin-top: 10rem;
+    margin-top: 5rem;
+    justify-content: space-evenly;
+
   }
 </style>

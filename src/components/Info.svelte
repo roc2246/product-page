@@ -90,6 +90,13 @@
 
 <style lang="scss">
   .product {
-    max-width: 20rem;
+    max-width: 30rem;
+    &__name{
+      font-weight: bolder;
+      font-size: 1.5rem;
+    }
+    &__description{
+      line-height: 1.5rem;
+    }
   }
 </style>

@@ -85,10 +85,13 @@
     &__img {
       border-radius: $gallery-radius;
       max-width: 25rem;
+      height: auto;
     }
     &__thumbnails {
       display: flex;
       flex-direction: row;
+      justify-content: space-between;
+    margin-top: 1rem;
     }
 
     &__prev-img {
@@ -114,6 +117,9 @@
         &--mobile {
           display: inline-block;
         }
+      }
+      &__thumbnails{
+        display: none;
       }
     }
   }
