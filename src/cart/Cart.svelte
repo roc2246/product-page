@@ -30,6 +30,8 @@
 
   {#if showCart === true && $cartStore}
     <div class="cart__items">
+      <h4 class="cart__items--heading">Cart</h4>
+      <hr>
       {#each $cartStore as item}
         <CartItem
           cartID={item.id}
@@ -40,8 +42,8 @@
           total={item.totalprice}
         />
       {/each}
-    </div>
     <Button>Checkout</Button>
+    </div>
   {/if}
 </section>
 
@@ -57,6 +59,16 @@
         width: 3.5rem;
         height: auto;
       }
+    }
+
+    &__items{
+      border: solid;
+      display: flex;
+      flex-direction: column;
+
+      position: absolute;
+      background-color: white;
+      top: 10vh;
     }
   }
 </style>
