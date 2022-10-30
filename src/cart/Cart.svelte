@@ -35,7 +35,7 @@
       {#each $cartStore as item}
         <CartItem
           cartID={item.id}
-          image={item.image[0]}
+          image={item.image}
           name={item.name}
           price={item.price}
           quantity={item.quantity}

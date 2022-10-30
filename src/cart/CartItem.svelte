@@ -31,3 +31,10 @@ export let cartID
     <img src="./images/icon-delete.svg" alt="Delete">
   </div>
 </div>
+
+<style lang="scss">
+  .cart__item--image{
+    width: 3rem;
+    height: auto;
+  }
+</style>
