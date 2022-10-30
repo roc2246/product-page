@@ -24,7 +24,7 @@
   };
 
   const toCart = () => {
-    const totalPrice = $productStore[0].totalprice * quantity
+    const totalPrice = $productStore[0].totalprice * quantity;
     const cartItem = {
       id: generateID($cartStore),
       image: $productStore[0].images[0],
@@ -40,17 +40,17 @@
       },
       body: JSON.stringify(cartItem),
     });
-    $cartStore = [...$cartStore, cartItem]
+    $cartStore = [...$cartStore, cartItem];
   };
 
   const updateQuantity = (mode) => {
-    if(mode ==="increase"){
-      quantity++
+    if (mode === "increase") {
+      quantity++;
     }
-    if(mode ==="decrease"){
-      quantity > 1 ? quantity-- : quantity
+    if (mode === "decrease") {
+      quantity > 1 ? quantity-- : quantity;
     }
-  }
+  };
 </script>
 
 <section class="product">
@@ -63,8 +63,13 @@
     <div class="product__price">
       {#if $productStore[0].sale === true}
         <span class="product__price--sale">
-          <h3 class="sale-price">${$productStore[0].totalprice}</h3>
-          <p class="discount">{$productStore[0].discount * 100}%</p>
+          <div class="top-row">
+            <h3 class="sale-price">${$productStore[0].totalprice}</h3>
+            <span class="container">
+              <p class="discount">{$productStore[0].discount * 100}%</p>
+            </span>
+          </div>
+
           <p class="original-price">${$productStore[0].price}</p>
         </span>
       {:else}
@@ -74,12 +79,21 @@
   {/if}
   <div class="product__order">
     <div class="quantity">
-      <div class="quantity_increase" on:keydown on:click={()=> updateQuantity("increase")}>
-        <img src="images/icon-plus.svg" alt="increase quantity" />
+      <div
+        class="quantity__decrease"
+        on:keydown
+        on:click={() => updateQuantity("decrease")}
+      >
+        <img src="images/icon-minus.svg" alt="decrease quantity" />
       </div>
       <div class="quantity__number">{quantity}</div>
-      <div class="quantity__decrease"  on:keydown on:click={()=> updateQuantity("decrease")}>
-        <img src="images/icon-minus.svg" alt="decrease quantity" />
+
+      <div
+        class="quantity_increase"
+        on:keydown
+        on:click={() => updateQuantity("increase")}
+      >
+        <img src="images/icon-plus.svg" alt="increase quantity" />
       </div>
     </div>
     <Button on:click={() => toCart()}
@@ -91,12 +105,31 @@
 <style lang="scss">
   .product {
     max-width: 30rem;
-    &__name{
+    &__name {
       font-weight: bolder;
       font-size: 1.5rem;
     }
-    &__description{
+    &__description {
       line-height: 1.5rem;
+    }
+    &__price {
+      &--sale {
+        .top-row {
+          display: flex;
+          flex-direction: row;
+        }
+      }
+    }
+    &__order {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      .quantity {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+      }
     }
   }
 </style>
