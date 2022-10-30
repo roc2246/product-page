@@ -22,7 +22,9 @@
     <img src="images/icon-cart.svg" alt="cart-icon" />
   </div>
   {#if $cartStore && $cartStore.length !== 0}
-    <span class="cart__badge">{$cartStore.length}</span>
+  <div class="cart__badge">
+    <span class="cart__badge--number">{$cartStore.length}</span>
+  </div>
   {/if}
   <div class="user-avatar">
     <img src="images/image-avatar.png" alt="user" />
@@ -48,6 +50,7 @@
 </section>
 
 <style lang="scss">
+  @import "../scss/global";
   .cart {
     display: flex;
     flex-direction: row;
@@ -61,7 +64,15 @@
       }
     }
 
+    &__badge{
+      position: absolute;
+      background-color: $orange;
+      margin-left: 1rem;
+      margin-top: -1rem;
+    }
+
     &__items{
+      padding: 1rem;
       border: solid;
       display: flex;
       flex-direction: column;
