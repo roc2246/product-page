@@ -30,10 +30,10 @@
     <img src="images/image-avatar.png" alt="user" />
   </div>
 
-  {#if showCart === true && $cartStore}
     <div class="cart__items">
       <h4 class="cart__items--heading">Cart</h4>
       <hr>
+  {#if showCart === true && $cartStore && $cartStore.length !== 0}
       {#each $cartStore as item}
         <CartItem
           cartID={item.id}
@@ -45,8 +45,10 @@
         />
       {/each}
     <Button>Checkout</Button>
-    </div>
+      {:else}
+      <p class="cart__items--empty">Your cart is empty</p>
   {/if}
+    </div>
 </section>
 
 <style lang="scss">
@@ -73,13 +75,16 @@
 
     &__items{
       padding: 1rem;
-      border: solid;
+      border-radius: .5rem;
+
       display: flex;
       flex-direction: column;
 
       position: absolute;
       background-color: white;
+      box-shadow: 10px 10px;
       top: 10vh;
+      right: 10vw;
     }
   }
 </style>

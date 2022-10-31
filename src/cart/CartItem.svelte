@@ -1,7 +1,7 @@
 <script>
   import { cartStore } from "../js/stores";
 
-export let cartID
+  export let cartID;
   export let image;
   export let name;
   export let price;
@@ -10,31 +10,58 @@ export let cartID
 
   const deleteCartItem = (id) => {
     fetch(`/cart/${id}`, {
-        method: "DELETE",
-        headers: {
-          "Content-type": "application/json;",
-        },
-      });
-      const results = $cartStore.filter((item) => item.id !== id);
-      $cartStore = results;
-  }
- 
+      method: "DELETE",
+      headers: {
+        "Content-type": "application/json;",
+      },
+    });
+    const results = $cartStore.filter((item) => item.id !== id);
+    $cartStore = results;
+  };
 </script>
 
 <div class="cart__item">
-  <img class="cart__item--image" src={image} alt="Product" />
-  <p class="cart__item--name">{name}</p>
-  <p class="cart__item--price">${price}</p>
-  <p class="cart__item--quantity">X{quantity}</p>
-  <p class="cart__item--total">${total}</p>
-  <div class="cart__item--delete" on:keydown on:click={()=> deleteCartItem(cartID)}>
-    <img src="./images/icon-delete.svg" alt="Delete">
+  <div class="cart__item--image">
+    <img src={image} alt="Product" />
+  </div>
+  <div class="cart__item--info">
+    <p class="cart__item--name">{name}</p>
+    <div class="cart__item--price">
+      <p class="price">${price}</p>
+      <p class="quantity">X{quantity}</p>
+      <p class="total">${total}</p>
+    </div>
+  </div>
+
+  <div
+    class="cart__item--delete"
+    on:keydown
+    on:click={() => deleteCartItem(cartID)}
+  >
+    <img src="./images/icon-delete.svg" alt="Delete" />
   </div>
 </div>
 
 <style lang="scss">
-  .cart__item--image{
-    width: 3rem;
-    height: auto;
+  .cart__item {
+    display: flex;
+        flex-direction: row;
+    &--image > img {
+      width: 3rem;
+      height: auto;
+    }
+    &--info {
+      display: flex;
+      flex-direction: column;
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
+    &--name{
+      white-space: nowrap;
+    }
+    &--price {
+        display: flex;
+        flex-direction: row;
+      }
   }
 </style>
