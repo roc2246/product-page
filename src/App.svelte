@@ -23,7 +23,8 @@
   {/if}
 </main>
 
-<style>
+<style lang="scss">
+  @import "./scss/global";
   main {
     margin: 2rem;
   }
@@ -42,6 +43,10 @@
     flex-wrap: wrap;
     margin-top: 5rem;
     justify-content: space-evenly;
-
+  }
+  @media (max-width: $mobile) {
+    main{
+      margin: 0;
+    }
   }
 </style>

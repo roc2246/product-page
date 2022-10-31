@@ -71,7 +71,7 @@
 
     <div class="gallery__thumbnails">
       {#each $productStore[0].thumbnails as thumbnail, i}
-        <Thumbnail on:imgchange={() => (imgNo = i)} source={thumbnail} />
+        <Thumbnail on:imgchange={() => (imgNo = i)} source={thumbnail} i = {i} />
       {/each}
     </div>
   </section>
