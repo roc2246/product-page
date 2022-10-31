@@ -33,8 +33,10 @@
     flex-direction: row;
   }
   #top-row{
-    margin-bottom: 2rem;
     justify-content: space-between;
+  }
+  hr{
+    margin: 0;
   }
   #product-info {
     flex-wrap: wrap;

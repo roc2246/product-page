@@ -30,10 +30,11 @@
     <img src="images/image-avatar.png" alt="user" />
   </div>
 
+  {#if showCart === true}
     <div class="cart__items">
       <h4 class="cart__items--heading">Cart</h4>
       <hr>
-  {#if showCart === true && $cartStore && $cartStore.length !== 0}
+  {#if  $cartStore && $cartStore.length !== 0}
       {#each $cartStore as item}
         <CartItem
           cartID={item.id}
@@ -49,6 +50,7 @@
       <p class="cart__items--empty">Your cart is empty</p>
   {/if}
     </div>
+    {/if}
 </section>
 
 <style lang="scss">
@@ -61,7 +63,7 @@
       margin-left: 2rem;
       margin-top: -1rem;
       & > img {
-        width: 3.5rem;
+        width: 2.5rem;
         height: auto;
       }
     }

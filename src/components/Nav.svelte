@@ -36,6 +36,11 @@
       &--link{
         margin-left: 1rem;
         margin-right: 1rem;
+        padding-bottom: 2rem;
+        &:hover{
+          border-bottom-style: solid;
+          border-bottom-color: $orange;
+        }
       }
     }
   }
