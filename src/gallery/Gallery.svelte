@@ -31,44 +31,46 @@
     const galleryImg = document.querySelector(
       ".gallery__img:not(.gallery__img--lightbox)"
     );
-    const lightboxImg = document.querySelector(
-      ".gallery__img--lightbox"
-    );
+    const lightboxImg = document.querySelector(".gallery__img--lightbox");
 
-    if(lightboxImg && galleryImg.src !== lightboxImg.src){
-      source = galleryImg.src
-    }else{
-      source = $productStore[0].images[imgNo]
+    if (lightboxImg && galleryImg.src !== lightboxImg.src) {
+      source = galleryImg.src;
+    } else {
+      source = $productStore[0].images[imgNo];
     }
     return source;
+  };
+
+  const resetHighlight = (mode) => {
+    const thumbnail = document.getElementsByClassName("thumbnail");
+    if (mode === "lightbox") {
+      for (let x = 4; x < thumbnail.length; x++) {
+        thumbnail[x].style.border = "none";
+      }
+    } else {
+      for (let x = 0; x < thumbnail.length; x++) {
+        thumbnail[x].style.border = "none";
+      }
+    }
   };
 
   const tumbnailSelect = (mode, i) => {
     const thumbnail = document.getElementsByClassName("thumbnail");
     if (mode === "lightbox") {
-      thumbnail[i].style.border = "solid";
-      thumbnail[i].style.borderColor = "hsl(26, 100%, 55%)";
+      resetHighlight(mode);
       thumbnail[i + 4].style.border = "solid";
       thumbnail[i + 4].style.borderColor = "hsl(26, 100%, 55%)";
     } else {
+      resetHighlight(mode);
       thumbnail[i].style.border = "solid";
       thumbnail[i].style.borderColor = "hsl(26, 100%, 55%)";
     }
-  }
+  };
 
   const selected = (i, mode) => {
     imgNo = i;
-    const thumbnail = document.getElementsByClassName("thumbnail");
-    for (let x = 0; x < thumbnail.length; x++) {
-      if (mode === "lightbox") {
-        thumbnail[x].style.border = "none";
-      } else {
-        thumbnail[x].style.border = "none";
-      }
-    }
-    tumbnailSelect(mode, i)
+    tumbnailSelect(mode, i);
   };
-  
 </script>
 
 {#if $productStore}
