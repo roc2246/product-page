@@ -26,23 +26,14 @@
     }
   };
 
-  const img = document.getElementsByClassName("gallery__img");
-  $: if (img[1] !== undefined) {
-    img[1].src = $productStore[0].images[imgNo];
-    const domain = window.location.href;
+  const getGalleryImg = () => {
+    const galleryImg = document.querySelector(
+    ".gallery__img:not(.gallery__img--lightbox)"
+  );
+  return galleryImg.src
+  }
+ 
 
-    if (
-      img[0].src !== domain + $productStore[0].images[0] &&
-      img[1].src === domain + $productStore[0].images[0]
-    ) {
-      console.log("TEST");
-      img[1].src = $productStore[0].images[2];
-      console.log(img[1].src);
-    }
-  }
-  $: for (let x = 0; x < img.length; x++) {
-    img[x].src = $productStore[0].images[imgNo];
-  }
 
   const selected = (i, mode) => {
     imgNo = i;
@@ -87,8 +78,8 @@
     <img
       on:keydown
       on:click
-      class="gallery__img"
-      src={$productStore[0].images[imgNo]}
+      class="gallery__img {mode === 'lightbox' ? 'gallery__img--lightbox' : ''}"
+      src={mode !== "lightbox" ? $productStore[0].images[imgNo] : getGalleryImg()}
       alt="product"
     />
     {#if mode === "lightbox"}
