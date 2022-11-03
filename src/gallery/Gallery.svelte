@@ -25,6 +25,45 @@
       if (imgNo < 0) imgNo = $productStore[0].images.length - 1;
     }
   };
+
+  const img = document.getElementsByClassName("gallery__img");
+  $: if (img[1] !== undefined) {
+    img[1].src = $productStore[0].images[imgNo];
+    const domain = window.location.href;
+
+    if (
+      img[0].src !== domain + $productStore[0].images[0] &&
+      img[1].src === domain + $productStore[0].images[0]
+    ) {
+      console.log("TEST");
+      img[1].src = $productStore[0].images[2];
+      console.log(img[1].src);
+    }
+  }
+  $: for (let x = 0; x < img.length; x++) {
+    img[x].src = $productStore[0].images[imgNo];
+  }
+
+  const selected = (i, mode) => {
+    imgNo = i;
+    const thumbnail = document.getElementsByClassName("thumbnail");
+    for (let x = 0; x < thumbnail.length; x++) {
+      if (mode === "lightbox") {
+        thumbnail[x].style.border = "none";
+      } else {
+        thumbnail[x].style.border = "none";
+      }
+    }
+    if (mode === "lightbox") {
+      thumbnail[i].style.border = "solid";
+      thumbnail[i].style.borderColor = "hsl(26, 100%, 55%)";
+      thumbnail[i + 4].style.border = "solid";
+      thumbnail[i + 4].style.borderColor = "hsl(26, 100%, 55%)";
+    } else {
+      thumbnail[i].style.border = "solid";
+      thumbnail[i].style.borderColor = "hsl(26, 100%, 55%)";
+    }
+  };
 </script>
 
 {#if $productStore}
@@ -71,7 +110,14 @@
 
     <div class="gallery__thumbnails">
       {#each $productStore[0].thumbnails as thumbnail, i}
-        <Thumbnail on:imgchange={() => (imgNo = i)} source={thumbnail} i = {i} />
+        <Thumbnail
+          on:imgchange={() => {
+            mode === "lightbox"
+              ? selected(i, "lightbox")
+              : selected(i, "gallery");
+          }}
+          source={thumbnail}
+        />
       {/each}
     </div>
   </section>
@@ -91,7 +137,7 @@
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-    margin-top: 1rem;
+      margin-top: 1rem;
     }
 
     &__prev-img {
@@ -118,7 +164,7 @@
           display: inline-block;
         }
       }
-      &__thumbnails{
+      &__thumbnails {
         display: none;
       }
     }
