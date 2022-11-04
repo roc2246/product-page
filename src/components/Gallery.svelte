@@ -11,8 +11,6 @@
       productStore.update((data) => info);
     }
   });
-
-  export let mode;
   let imgNo = 0;
 
   const cycleImgs = (cycle) => {
@@ -41,9 +39,7 @@
 
 {#if $productStore}
   <section class="gallery">
-    {#if mode === "lightbox"}
-      <CycleBtn direction="previous" on:cycle={() => cycleImgs("previous")} />
-    {/if}
+    <CycleBtn direction="previous" on:cycle={() => cycleImgs("previous")} />
     <img
       on:keydown
       on:click
@@ -51,9 +47,7 @@
       src={$productStore[0].images[imgNo]}
       alt="product"
     />
-    {#if mode === "lightbox"}
-      <CycleBtn direction="next" on:cycle={() => cycleImgs("next")} />
-    {/if}
+    <CycleBtn direction="next" on:cycle={() => cycleImgs("next")} />
     <div class="gallery__thumbnails">
       {#each $productStore[0].thumbnails as thumbnail, i}
         <Thumbnail
@@ -84,33 +78,5 @@
       margin-top: 1rem;
     }
 
-    &__previous {
-      &--mobile {
-        display: none;
-      }
-    }
-    &__next {
-      &--mobile {
-        display: none;
-      }
-    }
-  }
-
-  @media (max-width: $mobile) {
-    .gallery {
-      &__previous {
-        &--mobile {
-          display: inline-block;
-        }
-      }
-      &__next {
-        &--mobile {
-          display: inline-block;
-        }
-      }
-      &__thumbnails {
-        display: none;
-      }
-    }
   }
 </style>
