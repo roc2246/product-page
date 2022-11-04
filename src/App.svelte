@@ -2,7 +2,7 @@
   import Nav from "./components/Nav.svelte";
   import Cart from "./cart/Cart.svelte";
   import Info from "./components/Info.svelte";
-  import Gallery from "./gallery/Gallery.svelte";
+  import Gallery from "./components/Gallery.svelte";
   import Modal from "./UI/Modal.svelte";
 
   let showLightbox = false;
