@@ -15,12 +15,10 @@
   </section>
   <hr>
   <section id="product-info">
-    <Gallery on:click={() => (showLightbox = true)} />
+    <Gallery  />
     <Info />
   </section>
-  {#if showLightbox === true}
-    <!-- <Modal close={() => (showLightbox = false)}><Gallery mode="lightbox" /></Modal> -->
-  {/if}
+
 </main>
 
 <style lang="scss">
