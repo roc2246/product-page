@@ -3,9 +3,17 @@
   import Cart from "./cart/Cart.svelte";
   import Info from "./components/Info.svelte";
   import Gallery from "./components/Gallery.svelte";
-  import Modal from "./UI/Modal.svelte";
+  import Lightbox from "./components/Lightbox.svelte";
 
   let showLightbox = false;
+
+  const toggle = () => {
+    if(showLightbox === false){
+      showLightbox = true
+    } else if (showLightbox === true){
+      showLightbox = false
+    }
+  }
 </script>
 
 <main>
@@ -13,12 +21,14 @@
     <Nav />
     <Cart />
   </section>
-  <hr>
+  <hr />
   <section id="product-info">
-    <Gallery  />
+    <Gallery on:open={() => toggle()} />
     <Info />
   </section>
-
+  {#if showLightbox === true}
+    <Lightbox on:close={() => toggle()}/>
+  {/if}
 </main>
 
 <style lang="scss">
@@ -31,10 +41,10 @@
     display: flex;
     flex-direction: row;
   }
-  #top-row{
+  #top-row {
     justify-content: space-between;
   }
-  hr{
+  hr {
     margin: 0;
   }
   #product-info {
@@ -43,7 +53,7 @@
     justify-content: space-evenly;
   }
   @media (max-width: $mobile) {
-    main{
+    main {
       margin: 0;
     }
   }

@@ -1,9 +1,11 @@
 <script>
-  import { productStore, getData, imgNo } from "../js/stores.js";
-  import { onMount } from "svelte";
+  import { productStore, getData, galleryImgNo } from "../js/stores.js";
+  import { onMount, createEventDispatcher } from "svelte";
   import Image from "../slideshow/Image.svelte";
   import Thumbnails from "../slideshow/Thumbnails.svelte";
   import CycleBtn from "../slideshow/CycleBtn.svelte";
+
+  const dispatch = createEventDispatcher();
 
   onMount(async () => {
     let info = await getData("/products");
@@ -13,16 +15,15 @@
     }
   });
 
-
   const cycleImgs = (cycle) => {
     if (cycle === "next") {
-      $imgNo++;
-      if ($imgNo > $productStore[0].images.length - 1) $imgNo = 0;
+      $galleryImgNo++;
+      if ($galleryImgNo > $productStore[0].images.length - 1) $galleryImgNo = 0;
     }
 
     if (cycle === "previous") {
-      $imgNo--;
-      if ($imgNo < 0) $imgNo = $productStore[0].images.length - 1;
+      $galleryImgNo--;
+      if ($galleryImgNo < 0) $galleryImgNo = $productStore[0].images.length - 1;
     }
   };
 </script>
@@ -30,7 +31,7 @@
 {#if $productStore}
   <section class="gallery">
     <CycleBtn direction="previous" on:cycle={() => cycleImgs("previous")} />
-    <Image on:open={() => console.log("TEST")} imgNo = {$imgNo} />
+    <Image on:click={() => dispatch("open")} imgNo={$galleryImgNo} />
     <CycleBtn direction="next" on:cycle={() => cycleImgs("next")} />
     <Thumbnails />
   </section>

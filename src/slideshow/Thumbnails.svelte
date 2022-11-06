@@ -1,5 +1,5 @@
 <script>
-  import { productStore, getData, imgNo } from "../js/stores.js";
+  import { productStore, getData, galleryImgNo } from "../js/stores.js";
   import { onMount } from "svelte";
   import Thumbnail from "../slideshow/Thumbnail.svelte";
 
@@ -14,8 +14,8 @@
 //   https://stackoverflow.com/questions/61960147/how-to-pass-data-from-child-to-parent-with-2-svelte-components-in-html-parent-ch
 
   const select = (img) => {
-    $imgNo = img
-    console.log($imgNo)
+    $galleryImgNo = img
+    console.log($galleryImgNo)
     const thumbnail = document.getElementsByClassName("thumbnail");
 
     for (let x = 0; x < thumbnail.length; x++) {
