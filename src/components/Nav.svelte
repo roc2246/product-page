@@ -1,8 +1,18 @@
 <script>
+
+const toggle = () => {
+  const nav = document.getElementsByClassName("nav__links")[0]
+  if(nav.style.display === "" || nav.style.display === "none"){
+    nav.style.display = "flex"
+  } else {
+    nav.style.display = "none"
+  }
+}
+
 </script>
 
 <nav class="nav">
-  <div class="nav__mobile-toggle">
+  <div class="nav__mobile-toggle" on:keydown on:click={()=> toggle()}>
     <img src="images/icon-menu.svg" alt="toggle">
   </div>
   <div class="logo">
