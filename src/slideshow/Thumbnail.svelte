@@ -19,9 +19,5 @@
     border-radius: $gallery-radius;
     width: 5rem;
     height: auto;
-    &:nth-child(1) {
-      border: solid;
-      border-color: $orange;
-    }
   }
 </style>

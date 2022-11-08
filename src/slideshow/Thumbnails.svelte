@@ -1,8 +1,16 @@
 <script>
-  import { productStore, getData, galleryImgNo } from "../js/stores.js";
+  import {
+    productStore,
+    getData,
+    galleryImgNo,
+    lightboxImgNo,
+  } from "../js/stores.js";
   import { onMount } from "svelte";
   import Thumbnail from "../slideshow/Thumbnail.svelte";
 
+  export let mode;
+
+  
 
   onMount(async () => {
     let info = await getData("/products");
@@ -10,19 +18,36 @@
     if (info) {
       productStore.update((data) => info);
     }
-  });
-//   https://stackoverflow.com/questions/61960147/how-to-pass-data-from-child-to-parent-with-2-svelte-components-in-html-parent-ch
 
-  const select = (img) => {
-    $galleryImgNo = img
-    console.log($galleryImgNo)
     const thumbnail = document.getElementsByClassName("thumbnail");
+    if (mode === "gallery") {
+      thumbnail[0].style.border = "solid";
+      thumbnail[0].style.borderColor = "hsl(26, 100%, 55%)";
+    } else if (mode === "lightbox") {
+      thumbnail[$lightboxImgNo + 4].style.border = "solid";
+      thumbnail[$lightboxImgNo + 4].style.borderColor = "hsl(26, 100%, 55%)";
+    }
+  });
 
-    for (let x = 0; x < thumbnail.length; x++) {
+
+
+  const highlight = (no, img) => {
+    const thumbnail = document.getElementsByClassName("thumbnail");
+    for (let x = no; x < thumbnail.length; x++) {
       thumbnail[x].style.border = "none";
     }
-    thumbnail[img].style.border = "solid";
-    thumbnail[img].style.borderColor = "hsl(26, 100%, 55%)";
+    thumbnail[img + no].style.border = "solid";
+    thumbnail[img + no].style.borderColor = "hsl(26, 100%, 55%)";
+  };
+
+  const select = (img) => {
+    if (mode === "gallery") {
+      $galleryImgNo = img;
+      highlight(0, img);
+    } else if (mode === "lightbox") {
+      $lightboxImgNo = img;
+      highlight(4, img);
+    }
   };
 </script>
 

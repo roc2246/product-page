@@ -33,7 +33,7 @@
     <CycleBtn direction="previous" on:cycle={() => cycleImgs("previous")} />
     <Image on:click={() => dispatch("open")} imgNo={$galleryImgNo} />
     <CycleBtn direction="next" on:cycle={() => cycleImgs("next")} />
-    <Thumbnails />
+    <Thumbnails mode="gallery"/>
   </section>
 {/if}
 

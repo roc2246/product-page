@@ -21,5 +21,5 @@
     />
   </div>
   <Image imgNo={$lightboxImgNo} />
-  <Thumbnails />
+  <Thumbnails mode="lightbox"/>
 </Modal>
