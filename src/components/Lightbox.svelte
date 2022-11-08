@@ -12,14 +12,24 @@
 </script>
 
 <Modal>
-  <div class="lightbox__close">
-    <img
-    on:keydown
-      on:click={() => dispatch("close")}
-      src="images/icon-close.svg"
-      alt="Close"
-    />
+  <div class="lightbox">
+    <div class="lightbox__close">
+      <img
+        on:keydown
+        on:click={() => dispatch("close")}
+        src="images/icon-close.svg"
+        alt="Close"
+      />
+    </div>
+    <Image imgNo={$lightboxImgNo} />
+    <Thumbnails mode="lightbox" />
   </div>
-  <Image imgNo={$lightboxImgNo} />
-  <Thumbnails mode="lightbox"/>
 </Modal>
+
+<style lang="scss">
+  // .lightbox{
+  //   margin: auto;
+  //   width: 25rem;
+
+  // }
+</style>
