@@ -1,6 +1,7 @@
 <script>
   import { productStore, cartStore, getData } from "../js/stores.js";
   import { onMount } from "svelte";
+  import QtyBtn from "../UI/QtyBtn.svelte";
 
   onMount(async () => {
     let info = await getData("/products");
@@ -14,7 +15,10 @@
       cartStore.update((data) => cart);
     }
   });
-  let quantity = 1;
+
+  let quantity = 0;
+  let error = false
+
   const generateID = (store) => {
     let id = store.length + 1;
     return id;
@@ -30,45 +34,41 @@
       quantity: quantity,
       totalprice: totalPrice,
     };
-    fetch("/cart", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(cartItem),
-    });
-    $cartStore = [...$cartStore, cartItem];
+    if (quantity !== 0) {
+      error = false
+      fetch("/cart", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(cartItem),
+      });
+      $cartStore = [...$cartStore, cartItem];
+    } else {
+      error = true
+    }
   };
 
   const updateQuantity = (mode) => {
-    if (mode === "increase") {
+    if (mode === "plus") {
       quantity++;
     }
-    if (mode === "decrease") {
-      quantity > 1 ? quantity-- : quantity;
+    if (mode === "minus") {
+      quantity > 0 ? quantity-- : quantity;
     }
   };
 </script>
 
 <div class="product__order">
-  <div class="quantity">
-    <div
-      class="quantity__decrease"
-      on:keydown
-      on:click={() => updateQuantity("decrease")}
-    >
-      <img src="images/icon-minus.svg" alt="decrease quantity" />
-    </div>
+  {#if error === true}
+  <h4 class="product__order--error">Please enter a quantity other than 0.</h4>
+  {/if}
+  <div class="product__order--quantity">
+    <QtyBtn mode="minus" on:qtyChange={() => updateQuantity("minus")} />
     <div class="quantity__number">{quantity}</div>
-    <div
-      class="quantity__increase"
-      on:keydown
-      on:click={() => updateQuantity("increase")}
-    >
-      <img src="images/icon-plus.svg" alt="increase quantity" />
-    </div>
+    <QtyBtn mode="plus" on:qtyChange={() => updateQuantity("plus")} />
   </div>
-  <button on:click={() => toCart()}>
-    <img src="images/icon-cart.svg" alt="cart-icon" />Add to cart</button
+  <button class="product__order--add" on:click={() => toCart()}>
+    <img src="images/icon-cart.svg" alt="cart-icon" /> Add to cart</button
   >
 </div>
