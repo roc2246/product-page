@@ -48,9 +48,9 @@
 
 {#if $productStore}
   <section class="gallery">
-    <CycleBtn direction="previous" on:cycle={() => cycleImgs("previous")} />
+    <CycleBtn mode="gallery" direction="previous" on:cycle={() => cycleImgs("previous")} />
     <Image on:click={() => dispatch("open")} imgNo={$galleryImgNo} />
-    <CycleBtn direction="next" on:cycle={() => cycleImgs("next")} />
+    <CycleBtn mode="gallery" direction="next" on:cycle={() => cycleImgs("next")} />
     <Thumbnails mode="gallery"/>
   </section>
 {/if}

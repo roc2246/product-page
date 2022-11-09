@@ -2,11 +2,12 @@
   import { createEventDispatcher } from "svelte";
   const dispatch = createEventDispatcher();
 
-  export let direction
+  export let direction;
+  export let mode;
 </script>
 
 <div
-  class="gallery__{direction}"
+  class="gallery__{direction}--{mode}"
   on:keydown
   on:click={() => dispatch("cycle")}
 >
@@ -15,26 +16,31 @@
 
 <style lang="scss">
   @import "../scss/global";
-    .gallery{
+  .gallery {
     &__previous {
+      &--gallery {
         display: none;
+      }
     }
     &__next {
+      &--gallery {
         display: none;
+      }
     }
   }
 
   @media (max-width: $mobile) {
     .gallery {
-      &__previous {
-          display: inline-block;
-      }
-      &__next {
-          display: inline-block;
-      }
-      &__thumbnails {
-        display: none;
+    &__previous {
+      &--gallery {
+        display: inline-block;
       }
     }
+    &__next {
+      &--gallery {
+        display: inline-block;
+      }
+    }
+  }
   }
 </style>
