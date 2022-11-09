@@ -1,7 +1,7 @@
 <script>
   import Nav from "./components/Nav.svelte";
   import Cart from "./cart/Cart.svelte";
-  import Info from "./components/Info.svelte";
+  import Details from "./components/Details.svelte";
   import Gallery from "./components/Gallery.svelte";
   import Lightbox from "./components/Lightbox.svelte";
 
@@ -24,7 +24,7 @@
   <hr />
   <section id="product-info">
     <Gallery on:open={() => toggle()} />
-    <Info />
+    <Details />
   </section>
   {#if showLightbox === true}
     <Lightbox on:close={() => toggle()}/>

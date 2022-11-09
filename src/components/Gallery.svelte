@@ -3,7 +3,7 @@
   import { onMount, createEventDispatcher } from "svelte";
   import Image from "../slideshow/Image.svelte";
   import Thumbnails from "../slideshow/Thumbnails.svelte";
-  import CycleBtn from "../slideshow/CycleBtn.svelte";
+  import CycleBtn from "../UI/CycleBtn.svelte";
 
   const dispatch = createEventDispatcher();
 
