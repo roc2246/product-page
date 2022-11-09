@@ -15,7 +15,24 @@
     }
   });
 
+  const selectedImage = (no) => {
+    const thumbnail = document.getElementsByClassName("thumbnail");
+    thumbnail[no].style.border = "solid";
+    thumbnail[no].style.borderColor = "hsl(26, 100%, 55%)";
+    thumbnail[no].style.opacity = 0.5;
+  };
+
+  const resetHighlight = () => {
+    const thumbnail = document.getElementsByClassName("thumbnail");
+    for (let x = 0; x < thumbnail.length; x++) {
+      thumbnail[x].style.border = "none";
+      thumbnail[x].style.opacity = 1;
+    }
+  };
+
+
   const cycleImgs = (cycle) => {
+    resetHighlight()
     if (cycle === "next") {
       $galleryImgNo++;
       if ($galleryImgNo > $productStore[0].images.length - 1) $galleryImgNo = 0;
@@ -25,6 +42,7 @@
       $galleryImgNo--;
       if ($galleryImgNo < 0) $galleryImgNo = $productStore[0].images.length - 1;
     }
+    selectedImage($galleryImgNo)
   };
 </script>
 
