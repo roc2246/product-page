@@ -1,6 +1,5 @@
 <script>
   import CartItem from "./CartItem.svelte";
-  import Button from "../UI/Button.svelte";
   import { getData, cartStore } from "../js/stores.js";
   import { onMount } from "svelte";
 
@@ -45,7 +44,7 @@
           total={item.totalprice}
         />
       {/each}
-    <Button>Checkout</Button>
+    <button>Checkout</button>
       {:else}
       <p class="cart__items--empty">Your cart is empty</p>
   {/if}
