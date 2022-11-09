@@ -39,8 +39,7 @@
       $lightboxImgNo--;
       if ($lightboxImgNo < 0) $lightboxImgNo = $productStore[0].images.length - 1;
     }
-    selectedImage($lightboxImgNo)
-    console.log($lightboxImgNo)
+    selectedImage($lightboxImgNo + 4)
   };
 </script>
 
