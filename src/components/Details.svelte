@@ -33,7 +33,6 @@
 <style lang="scss">
   @import "../scss/global";
   .product {
-    display: grid;
     max-width: 20rem;
 
     grid-template-columns: 2;
