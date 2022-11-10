@@ -8,6 +8,9 @@
 <img
   on:keydown
   on:click={() => dispatch("imgchange")}
+  on:focus
+  on:mouseover = {() => dispatch("hover")}
+  on:mouseleave = {() => dispatch("leave")}
   class="thumbnail"
   src={source}
   alt="thumbnail"

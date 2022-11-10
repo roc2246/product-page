@@ -17,6 +17,31 @@
     thumbnail[no].style.opacity = 0.5;
   };
 
+
+
+  const hover = (no, direction) => {
+    const thumbnail = document.getElementsByClassName("thumbnail");
+    let selectedImgNo 
+    let int
+    if (mode === "gallery") {
+      selectedImgNo = $galleryImgNo
+      int = 0
+    } else if (mode === "lightbox") {
+      selectedImgNo = $lightboxImgNo + 4
+      int = 4
+    }
+    
+    if (direction === "hover") {
+      thumbnail[no + int].style.border = "solid";
+      thumbnail[no + int].style.borderColor = "hsl(26, 100%, 55%)";
+      thumbnail[no + int].style.opacity = 0.5;
+    } else if (direction === "leave") {
+      thumbnail[no + int].style.border = "none";
+      thumbnail[no + int].style.opacity = 1;
+    }
+    selectedImage(selectedImgNo)
+  };
+
   onMount(async () => {
     let info = await getData("/products");
 
@@ -53,15 +78,20 @@
 
 <div class="thumbnails">
   {#each $productStore[0].thumbnails as thumbnail, i}
-    <Thumbnail on:imgchange={() => select(i)} source={thumbnail} />
+    <Thumbnail
+      on:hover={() => hover(i, "hover")}
+      on:leave={() => hover(i, "leave")}
+      on:imgchange={() => select(i)}
+      source={thumbnail}
+    />
   {/each}
 </div>
 
 <style lang="scss">
-    .thumbnails {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      margin-top: 1rem;
-    }
+  .thumbnails {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 1rem;
+  }
 </style>
