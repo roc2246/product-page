@@ -63,5 +63,8 @@
         display: flex;
         flex-direction: row;
       }
+      &--delete{
+        cursor: pointer;
+      }
   }
 </style>

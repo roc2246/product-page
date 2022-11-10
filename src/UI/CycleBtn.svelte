@@ -18,11 +18,17 @@
   @import "../scss/global";
   .gallery {
     &__previous {
+      &--gallery, &--lightbox{
+      cursor: pointer;
+      }
       &--gallery {
         display: none;
       }
     }
     &__next {
+      &--gallery, &--lightbox{
+      cursor: pointer;
+      }
       &--gallery {
         display: none;
       }

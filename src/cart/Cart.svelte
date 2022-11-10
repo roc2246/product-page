@@ -58,7 +58,12 @@
     display: flex;
     flex-direction: row;
 
+    &__icon{
+      cursor: pointer;
+    }
+
     .user-avatar {
+      cursor: pointer;
       margin-left: 2rem;
       margin-top: -1rem;
       & > img {

@@ -61,9 +61,9 @@
 </Modal>
 
 <style lang="scss">
-  // .lightbox{
-  //   margin: auto;
-  //   width: 25rem;
-
-  // }
+  .lightbox{
+    &__close{
+      cursor: pointer;
+    }
+  }
 </style>

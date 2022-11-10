@@ -16,6 +16,7 @@
 <style lang="scss">
   @import "../scss/global";
   .thumbnail {
+    cursor: pointer;
     border-radius: $gallery-radius;
     width: 5rem;
     height: auto;

@@ -24,7 +24,6 @@
     <a href="blank" class="nav__links--link">Contact</a>
   </div>
   <div class="mobile-container">
-
     <div class="nav__links--mobile">
       <div class="close">
         <img
@@ -53,6 +52,7 @@
     }
     &__mobile-toggle {
       display: none;
+      cursor: pointer;
       margin-right: 1rem;
     }
     &__links {
@@ -75,7 +75,9 @@
       }
     }
   }
-
+  .close {
+    cursor: pointer;
+  }
   @media (max-width: $mobile) {
     .nav {
       &__mobile-toggle {
@@ -83,7 +85,7 @@
       }
       .mobile-container {
         display: none;
-        align-items:flex-start;
+        align-items: flex-start;
         justify-content: flex-start;
         background-color: rgba(0, 0, 0, 0.4);
         position: fixed;

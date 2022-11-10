@@ -47,6 +47,7 @@ textarea {
 }
 
 button{
+  cursor: pointer;
   color: white;
   background-color: hsl(26, 100%, 55%);
   outline: none;
