@@ -25,19 +25,23 @@
     <Info />
     <Price />
     <Order />
+  {:else}
+    <h1 class="product__load-msg">Loading Product, Please Wait...</h1>
   {/if}
 </section>
 
-<!-- https://www.youtube.com/results?search_query=css+grid -->
 <style lang="scss">
   @import "../scss/global";
-//   .product {
-   
-//   }
+  .product {
+    display: grid;
+    max-width: 20rem;
 
-//   @media (max-width: $mobile) {
-//     .product {
-    
-//   }
-// }
+    grid-template-columns: 2;
+  }
+
+  //   @media (max-width: $mobile) {
+  //     .product {
+
+  //   }
+  // }
 </style>
