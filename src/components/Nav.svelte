@@ -1,5 +1,5 @@
 <script>
-  import Close from "../UI/Close.svelte"
+  import Close from "../UI/Close.svelte";
 
   const toggle = () => {
     const nav = document.getElementsByClassName("mobile-container")[0];
@@ -19,26 +19,31 @@
     <img src="images/logo.svg" alt="logo" />
   </div>
   <div class="nav__links--desktop">
-    <a href="blank" class="nav__links--link">Collections</a>
-    <a href="blank" class="nav__links--link">Men</a>
-    <a href="blank" class="nav__links--link">Women</a>
-    <a href="blank" class="nav__links--link">About</a>
-    <a href="blank" class="nav__links--link">Contact</a>
+    <a href="blank" class="nav__links--desktop-link">Collections</a>
+    <a href="blank" class="nav__links--desktop-link">Men</a>
+    <a href="blank" class="nav__links--desktop-link">Women</a>
+    <a href="blank" class="nav__links--desktop-link">About</a>
+    <a href="blank" class="nav__links--desktop-link">Contact</a>
   </div>
   <div class="mobile-container">
     <div class="nav__links--mobile">
-      <Close on:close={()=> toggle()}/>
-      <a href="blank" class="nav__links--link">Collections</a>
-      <a href="blank" class="nav__links--link">Men</a>
-      <a href="blank" class="nav__links--link">Women</a>
-      <a href="blank" class="nav__links--link">About</a>
-      <a href="blank" class="nav__links--link">Contact</a>
+      <Close on:close={() => toggle()} />
+      <a href="blank" class="nav__links--mobile-link">Collections</a>
+      <a href="blank" class="nav__links--mobile-link">Men</a>
+      <a href="blank" class="nav__links--mobile-link">Women</a>
+      <a href="blank" class="nav__links--mobile-link">About</a>
+      <a href="blank" class="nav__links--mobile-link">Contact</a>
     </div>
   </div>
 </nav>
 
 <style lang="scss">
   @import "../scss/global";
+
+  .mobile-container{
+    z-index: 1;
+  }
+
   .nav {
     display: flex;
     flex-direction: row;
@@ -58,8 +63,15 @@
       }
       &--mobile {
         display: none;
+        flex-direction: column;
+        padding: 2rem;
+        background-color: white;
+        position: absolute;
+        height: 100vh;
+        width: 30vh;
+        
       }
-      &--link {
+      &--desktop-link{
         margin-left: 1rem;
         margin-right: 1rem;
         padding-bottom: 2rem;
@@ -68,9 +80,17 @@
           border-bottom-color: $orange;
         }
       }
+      &--mobile-link{
+        &:nth-child(2){
+          margin-top: 2rem;
+        }
+        font-weight: 700;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+      }
     }
   }
- 
+
   @media (max-width: $mobile) {
     .nav {
       &__mobile-toggle {
@@ -84,8 +104,8 @@
         position: fixed;
         left: 0;
         top: 0;
-        width: 100%; /* Full width */
-        height: 100%; /* Full height */
+        width: 100%;
+        height: 100%;
       }
       &__links {
         &--desktop {
@@ -93,9 +113,6 @@
         }
         &--mobile {
           display: flex;
-          flex-direction: column;
-          background-color: white;
-          position: absolute;
         }
       }
     }

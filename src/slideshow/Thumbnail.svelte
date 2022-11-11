@@ -23,5 +23,6 @@
     border-radius: $gallery-radius;
     width: 5rem;
     height: auto;
+    z-index: 0;
   }
 </style>
