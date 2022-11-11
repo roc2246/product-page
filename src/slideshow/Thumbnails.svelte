@@ -17,20 +17,18 @@
     thumbnail[no].style.opacity = 0.5;
   };
 
-
-
   const hover = (no, direction) => {
     const thumbnail = document.getElementsByClassName("thumbnail");
-    let selectedImgNo 
-    let int
+    let selectedImgNo;
+    let int;
     if (mode === "gallery") {
-      selectedImgNo = $galleryImgNo
-      int = 0
+      selectedImgNo = $galleryImgNo;
+      int = 0;
     } else if (mode === "lightbox") {
-      selectedImgNo = $lightboxImgNo + 4
-      int = 4
+      selectedImgNo = $lightboxImgNo + 4;
+      int = 4;
     }
-    
+
     if (direction === "hover") {
       thumbnail[no + int].style.border = "solid";
       thumbnail[no + int].style.borderColor = "hsl(26, 100%, 55%)";
@@ -39,7 +37,7 @@
       thumbnail[no + int].style.border = "none";
       thumbnail[no + int].style.opacity = 1;
     }
-    selectedImage(selectedImgNo)
+    selectedImage(selectedImgNo);
   };
 
   onMount(async () => {

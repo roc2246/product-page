@@ -1,4 +1,6 @@
 <script>
+  import Close from "../UI/Close.svelte"
+
   const toggle = () => {
     const nav = document.getElementsByClassName("mobile-container")[0];
     if (nav.style.display === "" || nav.style.display === "none") {
@@ -25,14 +27,7 @@
   </div>
   <div class="mobile-container">
     <div class="nav__links--mobile">
-      <div class="close">
-        <img
-          on:keydown
-          on:click={() => toggle()}
-          src="images/icon-close.svg"
-          alt="Close"
-        />
-      </div>
+      <Close on:close={()=> toggle()}/>
       <a href="blank" class="nav__links--link">Collections</a>
       <a href="blank" class="nav__links--link">Men</a>
       <a href="blank" class="nav__links--link">Women</a>
@@ -75,9 +70,7 @@
       }
     }
   }
-  .close {
-    cursor: pointer;
-  }
+ 
   @media (max-width: $mobile) {
     .nav {
       &__mobile-toggle {
