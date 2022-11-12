@@ -41,8 +41,8 @@
       &--gallery {
         position: absolute;
         display: none;
-        top: 35vh;
-        left: 15vw;
+        top: 30vh;
+        left: 2vw;
       }
       &--lightbox {
         position: absolute;
@@ -59,8 +59,8 @@
       &--gallery {
         position: absolute;
         display: none;
-        top: 35vh;
-        left: 75vw;
+        top: 30vh;
+        left: 88vw;
       }
       &--lightbox {
         position: absolute;
