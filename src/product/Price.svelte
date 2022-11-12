@@ -19,15 +19,15 @@
 {#if $productStore[0].sale === true}
   <span class="product__sale">
     <h3 class="product__sale--total-price">
-      ${$productStore[0].totalprice}
+      ${$productStore[0].totalprice.toFixed(2)}
     </h3>
     <h5 class="product__sale--discount">
       {$productStore[0].discount * 100}%
     </h5>
-    <h5 class="product__sale--price">${$productStore[0].price}</h5>
+    <h5 class="product__sale--price">${$productStore[0].price.toFixed(2)}</h5>
   </span>
 {:else}
-  <h3 class="product__price">${$productStore[0].price}</h3>
+  <h3 class="product__price">${$productStore[0].price.toFixed(2)}</h3>
 {/if}
 
 <style lang="scss">
@@ -36,7 +36,7 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 6rem;
+    width: 10rem;
     margin-top: 1rem;
     margin-bottom: 1rem;
     &--total-price{

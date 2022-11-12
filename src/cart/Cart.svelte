@@ -32,16 +32,16 @@
   {#if showCart === true}
     <div class="cart__items">
       <h4 class="cart__items--heading">Cart</h4>
-      <hr>
+      <hr class="cart__items--divider">
   {#if  $cartStore && $cartStore.length !== 0}
       {#each $cartStore as item}
         <CartItem
           cartID={item.id}
           image={item.image}
           name={item.name}
-          price={item.price}
+          price={item.price.toFixed(2)}
           quantity={item.quantity}
-          total={item.totalprice}
+          total={item.totalprice.toFixed(2)}
         />
       {/each}
     <button>Checkout</button>
@@ -60,6 +60,7 @@
 
     &__icon{
       cursor: pointer;
+     
     }
 
     .user-avatar {
@@ -69,6 +70,13 @@
       & > img {
         width: 2.5rem;
         height: auto;
+      }
+      &:hover{
+        border: solid;
+        border-radius: 50%;
+        border-color: $orange;
+
+        height: 2.5rem;
       }
     }
 
@@ -88,9 +96,12 @@
 
       position: absolute;
       background-color: white;
-      box-shadow: 10px 10px;
+      box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
       top: 10vh;
       right: 10vw;
+      &--heading{
+        margin-top: 0;
+      }
     }
   }
 </style>

@@ -23,3 +23,12 @@
     {$productStore[0].description}
   </p>
 </div>
+
+<style lang="scss">
+  @import "../scss/global";
+.product__info{
+  &--company {
+    color: $orange;
+  }
+}
+</style>
