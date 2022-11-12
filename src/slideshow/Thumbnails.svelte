@@ -13,7 +13,7 @@
   const selectedImage = (no) => {
     const thumbnail = document.getElementsByClassName("thumbnail");
     thumbnail[no].style.border = "solid";
-    thumbnail[no].style.borderColor = "hsl(26, 100%, 55%)";
+    thumbnail[no].style.borderColor = "hsl(20, 100%, 50%)";
     thumbnail[no].style.filter = "brightness(150%)";
   };
 
