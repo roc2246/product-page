@@ -26,11 +26,10 @@
   </div>
   <div class="cart__item--info">
     <p class="cart__item--name">{name}</p>
-    <div class="cart__item--price">
-      <p class="price">${price}</p>
-      <p class="quantity">X{quantity}</p>
-      <p class="total">${total}</p>
-    </div>
+    <p class="cart__item--price">
+      ${price} X {quantity}
+      <span class="total">${total}</span>
+    </p>
   </div>
 
   <div
@@ -62,10 +61,11 @@
     &--name {
       white-space: nowrap;
     }
-    &--price {
-      display: flex;
-      flex-direction: row;
+
+    .total {
+      font-weight: 700;
     }
+
     &--delete {
       cursor: pointer;
     }
@@ -75,8 +75,8 @@
       width: 100%;
       flex-wrap: wrap;
       &--delete {
-      margin-left: auto;
-    }
+        margin-left: auto;
+      }
     }
   }
 </style>
