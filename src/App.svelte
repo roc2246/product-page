@@ -60,7 +60,7 @@
     margin-top: 0;
   }
   #top-row {
-    padding: 1rem;
+    padding: 1.25rem 1rem 1rem 1rem;
   }
   }
 </style>

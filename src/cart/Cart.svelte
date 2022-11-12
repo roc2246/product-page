@@ -21,9 +21,9 @@
     <img src="images/icon-cart.svg" alt="cart-icon" />
   </div>
   {#if $cartStore && $cartStore.length !== 0}
-  <div class="cart__badge">
-    <span class="cart__badge--number">{$cartStore.length}</span>
-  </div>
+    <div class="cart__badge">
+      <span class="cart__badge--number">{$cartStore.length}</span>
+    </div>
   {/if}
   <div class="user-avatar">
     <img src="images/image-avatar.png" alt="user" />
@@ -32,24 +32,24 @@
   {#if showCart === true}
     <div class="cart__items">
       <h4 class="cart__items--heading">Cart</h4>
-      <hr class="cart__items--divider">
-  {#if  $cartStore && $cartStore.length !== 0}
-      {#each $cartStore as item}
-        <CartItem
-          cartID={item.id}
-          image={item.image}
-          name={item.name}
-          price={item.price.toFixed(2)}
-          quantity={item.quantity}
-          total={item.totalprice.toFixed(2)}
-        />
-      {/each}
-    <button>Checkout</button>
+      <hr class="cart__items--divider" />
+      {#if $cartStore && $cartStore.length !== 0}
+        {#each $cartStore as item}
+          <CartItem
+            cartID={item.id}
+            image={item.image}
+            name={item.name}
+            price={item.price.toFixed(2)}
+            quantity={item.quantity}
+            total={item.totalprice.toFixed(2)}
+          />
+        {/each}
+        <button>Checkout</button>
       {:else}
-      <p class="cart__items--empty">Your cart is empty</p>
-  {/if}
+        <p class="cart__items--empty">Your cart is empty</p>
+      {/if}
     </div>
-    {/if}
+  {/if}
 </section>
 
 <style lang="scss">
@@ -58,20 +58,19 @@
     display: flex;
     flex-direction: row;
 
-    &__icon{
+    &__icon {
       cursor: pointer;
-     
     }
 
     .user-avatar {
       cursor: pointer;
       margin-left: 2rem;
-      margin-top: -.5rem;
+      margin-top: -0.5rem;
       & > img {
         width: 2rem;
         height: auto;
       }
-      &:hover{
+      &:hover {
         border: solid;
         border-radius: 50%;
         border-color: $orange;
@@ -80,16 +79,28 @@
       }
     }
 
-    &__badge{
+    &__badge {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
       position: absolute;
       background-color: $orange;
-      margin-left: 1rem;
-      margin-top: -1rem;
+      margin-left: .5rem;
+      margin-top: -.65rem;
+      border-radius: 40%;
+      width: 1.5rem;
+      height: 1rem;
+      &--number {
+        font-weight: 700;
+        font-size: .75rem;
+        color: white;
+      }
     }
 
-    &__items{
+    &__items {
       padding: 1rem;
-      border-radius: .5rem;
+      border-radius: 0.5rem;
 
       display: flex;
       flex-direction: column;
@@ -99,10 +110,9 @@
       box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
       top: 10vh;
       right: 10vw;
-      &--heading{
+      &--heading {
         margin-top: 0;
       }
     }
   }
-
 </style>
