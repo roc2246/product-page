@@ -30,11 +30,8 @@
     }
 
     if (direction === "hover") {
-      thumbnail[no + int].style.border = "solid";
-      thumbnail[no + int].style.borderColor = "hsl(26, 100%, 55%)";
       thumbnail[no + int].style.opacity = 0.5;
     } else if (direction === "leave") {
-      thumbnail[no + int].style.border = "none";
       thumbnail[no + int].style.opacity = 1;
     }
     selectedImage(selectedImgNo);
