@@ -46,6 +46,8 @@
   .cart__item {
     display: flex;
         flex-direction: row;
+        margin-top: .5rem;
+        margin-bottom: .5rem;
     &--image > img {
       width: 3rem;
       height: auto;

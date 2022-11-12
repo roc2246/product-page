@@ -33,21 +33,23 @@
     <div class="cart__items">
       <h4 class="cart__items--heading">Cart</h4>
       <hr class="cart__items--divider" />
-      {#if $cartStore && $cartStore.length !== 0}
-        {#each $cartStore as item}
-          <CartItem
-            cartID={item.id}
-            image={item.image}
-            name={item.name}
-            price={item.price.toFixed(2)}
-            quantity={item.quantity}
-            total={item.totalprice.toFixed(2)}
-          />
-        {/each}
-        <button>Checkout</button>
-      {:else}
-        <p class="cart__items--empty">Your cart is empty</p>
-      {/if}
+      <div class="cart__items--items">
+        {#if $cartStore && $cartStore.length !== 0}
+          {#each $cartStore as item}
+            <CartItem
+              cartID={item.id}
+              image={item.image}
+              name={item.name}
+              price={item.price.toFixed(2)}
+              quantity={item.quantity}
+              total={item.totalprice.toFixed(2)}
+            />
+          {/each}
+          <button class="cart__items--checkout">Checkout</button>
+        {:else}
+          <p class="cart__items--empty">Your cart is empty</p>
+        {/if}
+      </div>
     </div>
   {/if}
 </section>
@@ -86,14 +88,14 @@
 
       position: absolute;
       background-color: $orange;
-      margin-left: .5rem;
-      margin-top: -.65rem;
+      margin-left: 0.5rem;
+      margin-top: -0.65rem;
       border-radius: 40%;
       width: 1.5rem;
       height: 1rem;
       &--number {
         font-weight: 700;
-        font-size: .75rem;
+        font-size: 0.75rem;
         color: white;
       }
     }
@@ -101,7 +103,8 @@
     &__items {
       padding: 1rem;
       border-radius: 0.5rem;
-
+      width: 18.75rem;
+      min-height: 9.875rem;
       display: flex;
       flex-direction: column;
 
@@ -109,9 +112,18 @@
       background-color: white;
       box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
       top: 10vh;
-      right: 10vw;
+      right: 5vw;
       &--heading {
         margin-top: 0;
+      }
+      &--items {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      &--checkout {
+        width: 100%;
       }
     }
   }
