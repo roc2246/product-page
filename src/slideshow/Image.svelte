@@ -32,4 +32,14 @@
       height: auto;
     }
   }
+
+  @media (max-width: $mobile){
+    .gallery {
+    &__img {
+      border-radius: 0;
+      max-width: 100%;
+      height: auto;
+    }
+  }
+  }
 </style>

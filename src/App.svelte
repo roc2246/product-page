@@ -56,5 +56,8 @@
     main {
       margin: 0;
     }
+    #product-info {
+    margin-top: 0;
+  }
   }
 </style>
