@@ -91,7 +91,7 @@
       justify-content: space-between;
       padding: 0.5rem;
       width: 25%;
-      height: 2rem;
+      height: 2.75rem;
       .quantity-no {
         display: flex;
         align-items: center;

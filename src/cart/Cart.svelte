@@ -107,7 +107,7 @@
       min-height: 9.875rem;
       display: flex;
       flex-direction: column;
-
+      z-index: 1;
       position: absolute;
       background-color: white;
       box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
@@ -124,6 +124,15 @@
       }
       &--checkout {
         width: 100%;
+      }
+    }
+  }
+
+  @media (max-width: $mobile) {
+    .cart{
+      &__items{
+        width: 80vw;
+        height: auto;
       }
     }
   }

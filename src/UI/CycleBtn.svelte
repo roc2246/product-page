@@ -24,7 +24,7 @@
       height: 2rem;
       background-color: white;
       padding: 0.5rem;
-
+      z-index: 0;
       & > img {
         position: relative;
         top: 50%;

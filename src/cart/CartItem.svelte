@@ -43,11 +43,12 @@
 </div>
 
 <style lang="scss">
+  @import "../scss/global";
   .cart__item {
     display: flex;
-        flex-direction: row;
-        margin-top: .5rem;
-        margin-bottom: .5rem;
+    flex-direction: row;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
     &--image > img {
       width: 3rem;
       height: auto;
@@ -58,15 +59,24 @@
       margin-left: 1rem;
       margin-right: 1rem;
     }
-    &--name{
+    &--name {
       white-space: nowrap;
     }
     &--price {
-        display: flex;
-        flex-direction: row;
-      }
-      &--delete{
-        cursor: pointer;
-      }
+      display: flex;
+      flex-direction: row;
+    }
+    &--delete {
+      cursor: pointer;
+    }
+  }
+  @media (max-width: $mobile) {
+    .cart__item {
+      width: 100%;
+      flex-wrap: wrap;
+      &--delete {
+      margin-left: auto;
+    }
+    }
   }
 </style>
