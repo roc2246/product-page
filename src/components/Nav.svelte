@@ -54,6 +54,7 @@
       display: none;
       cursor: pointer;
       margin-right: 1rem;
+      margin-top: .25rem;
     }
     &__links {
       &--desktop {

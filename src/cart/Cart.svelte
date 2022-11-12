@@ -66,9 +66,9 @@
     .user-avatar {
       cursor: pointer;
       margin-left: 2rem;
-      margin-top: -1rem;
+      margin-top: -.5rem;
       & > img {
-        width: 2.5rem;
+        width: 2rem;
         height: auto;
       }
       &:hover{
@@ -104,4 +104,5 @@
       }
     }
   }
+
 </style>

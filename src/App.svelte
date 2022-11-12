@@ -59,5 +59,8 @@
     #product-info {
     margin-top: 0;
   }
+  #top-row {
+    padding: 1rem;
+  }
   }
 </style>
