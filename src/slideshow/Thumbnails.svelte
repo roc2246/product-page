@@ -74,7 +74,7 @@
   };
 </script>
 
-<div class="thumbnails">
+<div class="thumbnails thumbnails--{mode}">
   {#each $productStore[0].thumbnails as thumbnail, i}
     <Thumbnail
       on:hover={() => hover(i, "hover")}
@@ -86,10 +86,19 @@
 </div>
 
 <style lang="scss">
+  @import "../scss/global";
   .thumbnails {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     margin-top: 1rem;
+  }
+
+  @media (max-width: $mobile) {
+    .thumbnails{
+      &--gallery{
+        display: none;
+      }
+    }
   }
 </style>
