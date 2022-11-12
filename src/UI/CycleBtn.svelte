@@ -44,12 +44,11 @@
       }
       &--gallery {
         display: none;
-        top: 30vh;
-        left: 2vw;
+     
       }
       &--lightbox {
         position: absolute;
-        margin-top: 9rem;
+        margin-top: 9.5rem;
         margin-left: -1rem;
       }
     }
@@ -61,8 +60,7 @@
       }
       &--gallery {
         display: none;
-        top: 30vh;
-        left: 78vw;
+      
       }
       &--lightbox {
         position: absolute;
