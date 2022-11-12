@@ -45,7 +45,7 @@
 
 <Modal>
   <div class="lightbox">
-    <Close on:close/>
+    <Close mode="lightbox" on:close/>
     <CycleBtn
       mode="lightbox"
       direction="previous"

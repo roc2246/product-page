@@ -27,7 +27,7 @@
   </div>
   <div class="mobile-container">
     <div class="nav__links--mobile">
-      <Close on:close={() => toggle()} />
+      <Close mode="mobile-nav" on:close={() => toggle()} />
       <a href="blank" class="nav__links--mobile-link">Collections</a>
       <a href="blank" class="nav__links--mobile-link">Men</a>
       <a href="blank" class="nav__links--mobile-link">Women</a>
