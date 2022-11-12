@@ -25,14 +25,15 @@
       background-color: white;
       padding: 0.5rem;
       z-index: 0;
+      &:hover img {
+        filter: invert(52%) sepia(96%) saturate(1563%) hue-rotate(347deg)
+          brightness(101%) contrast(101%);
+      }
       & > img {
         position: relative;
         top: 50%;
         left: 25%;
         transform: translate(0%, -50%);
-     &:hover {
-      filter: invert(52%) sepia(96%) saturate(1563%) hue-rotate(347deg) brightness(101%) contrast(101%);
-     }
       }
     }
 
