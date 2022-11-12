@@ -34,11 +34,13 @@
   @import "../scss/global";
   .product {
     max-width: 25rem;
+    padding-top: 2rem;
   }
 
   @media (max-width: $mobile) {
     .product {
       width: 100%;
+      padding-top: 0;
     }
   }
 </style>
