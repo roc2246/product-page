@@ -35,6 +35,7 @@
     font-weight: 700;
     font-size: 2rem;
     margin-top: .5rem;
+    margin-bottom: .75rem;
   }
   &--description{
     line-height: 1.5rem;
