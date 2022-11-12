@@ -17,7 +17,6 @@
   });
 
   let quantity = 0;
-  let error = false;
 
   const generateID = (store) => {
     let id = store.length + 1;
@@ -26,6 +25,9 @@
 
   const toCart = () => {
     const totalPrice = $productStore[0].totalprice * quantity;
+    const errorMssg = document.getElementsByClassName(
+      "product__order--error"
+    )[0];
     const cartItem = {
       id: generateID($cartStore),
       image: $productStore[0].images[0],
@@ -35,7 +37,7 @@
       totalprice: totalPrice,
     };
     if (quantity !== 0) {
-      error = false;
+      errorMssg.style.display = "none";
       fetch("/cart", {
         method: "POST",
         headers: {
@@ -45,7 +47,8 @@
       });
       $cartStore = [...$cartStore, cartItem];
     } else {
-      error = true;
+      errorMssg.style.display = "inline";
+      window.scrollTo(0, document.body.scrollHeight);
     }
   };
 
@@ -60,9 +63,6 @@
 </script>
 
 <div class="product__order">
-  {#if error === true}
-    <h4 class="product__order--error">Please enter a quantity other than 0.</h4>
-  {/if}
   <div class="product__order--quantity">
     <QtyBtn mode="minus" on:qtyChange={() => updateQuantity("minus")} />
     <div class="quantity-no"><h5>{quantity}</h5></div>
@@ -71,6 +71,7 @@
   <button class="product__order--add" on:click={() => toCart()}>
     <img src="images/icon-cart.svg" alt="cart-icon" /> Add to cart</button
   >
+  <h4 class="product__order--error">Please enter a quantity other than 0.</h4>
 </div>
 
 <style lang="scss">
@@ -79,6 +80,9 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    &--error {
+      display: none;
+    }
     &--quantity {
       background-color: $light-grayish-blue;
       border-radius: 0.5rem;
@@ -101,9 +105,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      
 
-      & > img{
+      & > img {
         filter: brightness(0) invert(1);
         transform: scale(75%);
         margin-right: 1rem;
@@ -119,11 +122,11 @@
       }
 
       &--add {
-      width: 100%;
-      margin-top: 1rem;
-      padding-left: 6.5rem;
-      padding-right: 6.5rem;
-    }
+        width: 100%;
+        margin-top: 1rem;
+        padding-left: 6.5rem;
+        padding-right: 6.5rem;
+      }
     }
   }
 </style>
