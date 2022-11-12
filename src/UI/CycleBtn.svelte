@@ -19,8 +19,6 @@
   .gallery {
     &__previous,
     &__next {
-      position: absolute;
-
       border-radius: 50%;
       width: 2rem;
       height: 2rem;
@@ -41,21 +39,33 @@
         cursor: pointer;
       }
       &--gallery {
+        position: absolute;
         display: none;
         top: 35vh;
         left: 15vw;
       }
+      &--lightbox {
+        position: absolute;
+        margin-top: 9rem;
+        margin-left: -1rem;
+      }
     }
+
     &__next {
       &--gallery,
       &--lightbox {
         cursor: pointer;
       }
       &--gallery {
-        display: none;
         position: absolute;
+        display: none;
         top: 35vh;
         left: 75vw;
+      }
+      &--lightbox {
+        position: absolute;
+        margin-left: 23rem;
+        margin-top: -16rem;
       }
     }
   }
