@@ -76,7 +76,7 @@
         border-radius: 50%;
         border-color: $orange;
 
-        height: 2.5rem;
+        height: 2rem;
       }
     }
 
