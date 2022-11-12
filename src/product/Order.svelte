@@ -86,7 +86,7 @@
       flex-direction: row;
       justify-content: space-between;
       padding: 0.5rem;
-      width: 6rem;
+      width: 25%;
       height: 2rem;
       .quantity-no {
         display: flex;
@@ -95,31 +95,32 @@
       }
     }
     &--add {
-      width: 12rem;
+      width: 65%;
       margin-left: auto;
 
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      padding-left: 2.5rem;
-      padding-right: 2.5rem;
+      justify-content: center;
+      
 
       & > img{
         filter: brightness(0) invert(1);
         transform: scale(75%);
+        margin-right: 1rem;
       }
     }
   }
 
   @media (max-width: $mobile) {
     .product__order {
+      width: 100%;
       &--quantity {
         width: 100%;
       }
 
       &--add {
       width: 100%;
-      margin-top: .05rem;
+      margin-top: 1rem;
       padding-left: 6.5rem;
       padding-right: 6.5rem;
     }

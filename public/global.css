@@ -52,6 +52,7 @@ button{
   background-color: hsl(26, 100%, 55%);
   outline: none;
   font-weight: 700;
+  font-size: .75rem;
   border-radius:  0.5rem;
   padding: .75rem;
 }

@@ -33,14 +33,12 @@
 <style lang="scss">
   @import "../scss/global";
   .product {
-    max-width: 20rem;
-
-    grid-template-columns: 2;
+    max-width: 25rem;
   }
 
-  //   @media (max-width: $mobile) {
-  //     .product {
-
-  //   }
-  // }
+  @media (max-width: $mobile) {
+    .product {
+      width: 100%;
+    }
+  }
 </style>

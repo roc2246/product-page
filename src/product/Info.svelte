@@ -29,6 +29,15 @@
 .product__info{
   &--company {
     color: $orange;
+    margin-bottom: 0;
+  }
+  &--name{
+    font-weight: 700;
+    font-size: 2rem;
+    margin-top: .5rem;
+  }
+  &--description{
+    line-height: 1.5rem;
   }
 }
 </style>
