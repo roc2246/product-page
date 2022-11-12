@@ -14,7 +14,7 @@
     const thumbnail = document.getElementsByClassName("thumbnail");
     thumbnail[no].style.border = "solid";
     thumbnail[no].style.borderColor = "hsl(26, 100%, 55%)";
-    thumbnail[no].style.opacity = 0.5;
+    thumbnail[no].style.filter = "brightness(150%)";
   };
 
   const hover = (no, direction) => {
@@ -30,9 +30,9 @@
     }
 
     if (direction === "hover") {
-      thumbnail[no + int].style.opacity = 0.5;
+      thumbnail[no + int].style.filter = "brightness(150%)";
     } else if (direction === "leave") {
-      thumbnail[no + int].style.opacity = 1;
+      thumbnail[no + int].style.filter = "brightness(100%)";
     }
     selectedImage(selectedImgNo);
   };
@@ -55,7 +55,7 @@
     const thumbnail = document.getElementsByClassName("thumbnail");
     for (let x = no; x < thumbnail.length; x++) {
       thumbnail[x].style.border = "none";
-      thumbnail[x].style.opacity = 1;
+      thumbnail[x].style.filter = "brightness(100%)";;
     }
     selectedImage(img + no);
   };
