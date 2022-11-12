@@ -43,7 +43,6 @@
         cursor: pointer;
       }
       &--gallery {
-        position: absolute;
         display: none;
         top: 30vh;
         left: 2vw;
@@ -61,10 +60,9 @@
         cursor: pointer;
       }
       &--gallery {
-        position: absolute;
         display: none;
         top: 30vh;
-        left: 88vw;
+        left: 78vw;
       }
       &--lightbox {
         position: absolute;

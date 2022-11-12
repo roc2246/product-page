@@ -30,9 +30,8 @@
     }
   };
 
-
   const cycleImgs = (cycle) => {
-    resetHighlight()
+    resetHighlight();
     if (cycle === "next") {
       $galleryImgNo++;
       if ($galleryImgNo > $productStore[0].images.length - 1) $galleryImgNo = 0;
@@ -42,16 +41,26 @@
       $galleryImgNo--;
       if ($galleryImgNo < 0) $galleryImgNo = $productStore[0].images.length - 1;
     }
-    selectedImage($galleryImgNo)
+    selectedImage($galleryImgNo);
   };
 </script>
 
 {#if $productStore}
   <section class="gallery">
-    <CycleBtn mode="gallery" direction="previous" on:cycle={() => cycleImgs("previous")} />
     <Image on:click={() => dispatch("open")} imgNo={$galleryImgNo} />
-    <CycleBtn mode="gallery" direction="next" on:cycle={() => cycleImgs("next")} />
-    <Thumbnails mode="gallery"/>
+    <div class="gallery__cycle-btns">
+      <CycleBtn
+        mode="gallery"
+        direction="previous"
+        on:cycle={() => cycleImgs("previous")}
+      />
+      <CycleBtn
+        mode="gallery"
+        direction="next"
+        on:cycle={() => cycleImgs("next")}
+      />
+    </div>
+    <Thumbnails mode="gallery" />
   </section>
 {/if}
 
@@ -60,5 +69,16 @@
   .gallery {
     display: flex;
     flex-direction: column;
+    &__cycle-btns {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      position: absolute;
+      width: 90%;
+   
+      top: 15rem;
+      left: 1.5rem;
+    }
   }
 </style>
